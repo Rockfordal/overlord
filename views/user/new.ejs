@@ -1,0 +1,88 @@
+<form action="/user/create" method="POST" id="sign-up-form" class="form-signin">
+
+  <h2 class="form-signin-heading">Skapa ett konto</h2>
+
+  <% if(flash && flash.err) { %>
+  <ul class="alert alert-success">
+    <% Object.keys(flash.err).forEach(function(error) { %>
+    <li><%- JSON.stringify(flash.err[error]) %></li>
+    <% }) %>
+  </ul>
+  <% } %>
+
+  <fieldset>
+    <div class="col-sm-4">
+      <div class="box">
+        <div class="lead">Namn</div>
+        <small class="text-muted">Ditt namn</small>
+      </div>
+    </div>
+    <div class="col-sm-7 col-sm-offset-1">
+      <div class="form-group">
+        <input type="text" class="form-control" name="name">
+      </div>
+    </div>
+  </fieldset>
+
+  <hr class="hr-normal">
+
+  <fieldset>
+    <div class="col-sm-4">
+      <div class="box">
+        <div class="lead">E-post</div>
+        <small class="text-muted">Din e-postadress</small>
+      </div>
+    </div>
+    <div class="col-sm-7 col-sm-offset-1">
+      <div class="form-group">
+        <input type="text" class="form-control" name="email">
+      </div>
+    </div>
+  </fieldset>
+
+  <hr class="hr-normal">
+
+  <fieldset>
+    <div class="col-sm-4">
+      <div class="box">
+        <div class="lead">Lösenord</div>
+        <small class="text-muted">Ditt lösenord för inloggning</small>
+      </div>
+    </div>
+    <div class="col-sm-7 col-sm-offset-1">
+      <div class="form-group">
+        <input type="password" class="form-control" name="password">
+      </div>
+    </div>
+  </fieldset>
+
+  <hr class="hr-normal">
+
+  <fieldset>
+    <div class="col-sm-4">
+      <div class="box">
+        <div class="lead">Bekräfta</div>
+        <small class="text-muted">Upprepa lösenordet</small>
+      </div>
+    </div>
+    <div class="col-sm-7 col-sm-offset-1">
+      <div class="form-group">
+        <input type="password" class="form-control" name="confirmation">
+      </div>
+    </div>
+  </fieldset>
+
+  <!--<fieldset>-->
+    <!--Vi behöver veta lite uppgifter om dig.-->
+  <!--</fieldset>-->
+
+  <div class="form-actions">
+    <div class="row">
+      <div class="col-sm-7 col-sm-offset-5">
+        <input type="submit" class="btn btn-lg btn-success" value="Skapa">
+      </div>
+    </div>
+  </div>
+
+  <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+</form>

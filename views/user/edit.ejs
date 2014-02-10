@@ -1,0 +1,10 @@
+<h2>Ändrar <%= user.name %></h2>
+
+<form action="/user/update/<%= user.id %>" method="POST" class="form-signin">
+<input type="text" value="<%= user.name %>" name="name" class="form-control"/>
+<input type="text" value="<%= user.title %>" name="title" class="form-control"/>
+<input type="text" value="<%= user.email %>" name="email" class="form-control"/>
+
+<input type="submit" value="Ändra" class="btn btn-lg btn-primary"/>
+<input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+</form>

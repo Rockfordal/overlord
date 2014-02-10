@@ -1,0 +1,35 @@
+<div class="container">
+  <h3>Användare</h3>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Namn</th>
+      <th>Titel</th>
+      <th>E-post</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+    <% _.each(users, function(user) { %>
+    <tr data-id="<%= user.id %>" dat-model="user">
+      <td><%= user.id %></td>
+      <td><%= user.name %></td>
+      <td><%= user.title %></td>
+      <td><%= user.email %></td>
+      <td><a href="/user/show/<%= user.id %>" class="btn btn-sm btn-primary">Visa</a></td>
+      <td><a href="/user/edit/<%= user.id %>" class="btn btn-sm btn-warning">Ändra</a></td>
+
+      <td>
+        <form action="/user/destroy/<%= user.id %>" method="POST">
+          <input type="hidden" name="method" value="delete"/>
+          <input type="submit" class="btn btn-sm btn-danger" value="Radera"/>
+          <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+        </form></td>
+    </tr>
+
+    <% }) %>
+  </table>
+
+  <a class="btn btn-primary" href="/user/new">Skapa</a>
+</div>

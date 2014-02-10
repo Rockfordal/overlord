@@ -1,0 +1,2 @@
+# s
+### a Sails application
