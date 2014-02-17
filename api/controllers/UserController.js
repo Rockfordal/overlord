@@ -61,8 +61,17 @@ module.exports = {
                 }
                 return res.redirect('user/new');
             }
-            //res.json(user);
-            res.redirect('/user/show/' + user.id)
+
+            // Log user in
+            req.session.authenticated = true;
+            req.session.User = user;
+
+            // Change status to online
+            user.online = true
+            user.save(function(err, user) {
+                if (err) return next(err);
+                res.redirect('/user/show/' + user.id)
+            });
         })
     },
 

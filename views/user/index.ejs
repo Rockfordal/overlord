@@ -1,5 +1,6 @@
 <div class="container">
   <h3>Användare</h3>
+
   <table class="table">
     <tr>
       <th>ID</th>
@@ -17,6 +18,10 @@
       <td><%= user.name %></td>
       <td><%= user.title %></td>
       <td><%= user.email %></td>
+      <td> <% if (user.admin) { %>
+        <i class="glyphicon glyphicon-user"></i>
+      <% } %>
+      </td>
       <td><a href="/user/show/<%= user.id %>" class="btn btn-sm btn-primary">Visa</a></td>
       <td><a href="/user/edit/<%= user.id %>" class="btn btn-sm btn-warning">Ändra</a></td>
 
