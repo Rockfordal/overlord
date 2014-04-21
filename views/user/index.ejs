@@ -24,6 +24,8 @@
       <td><%= user.title %></td>
       <td><%= user.email %></td>
       <td> <% if (user.admin) { %>
+        <i class="glyphicon glyphicon-tower"></i>
+      <% } else { %>
         <i class="glyphicon glyphicon-user"></i>
       <% } %>
       </td>

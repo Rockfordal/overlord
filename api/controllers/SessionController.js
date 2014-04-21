@@ -74,6 +74,16 @@ module.exports = {
          user.save(function(err, user) {
              if (err) return next(err);
 
+             // Inform other sockets
+             User.publishUpdate(user.id, {
+                 loggedIn: true,
+                 id: user.id,
+                 name: user.name,
+                 action: ' har loggat in.'
+             });
+
+             // If user is admin redirect to user list
+             // This is used in conjunction with config/policies.js
              if (req.session.User.admin) {
                  res.redirect('/user');
                  return;
@@ -88,13 +98,26 @@ module.exports = {
 
   destroy: function(req, res, next) {
 
-    User.findOne(req.session.User.id, function(){
-        var userId = req.session.User.id;
+    var userprop = req.session.hasOwnProperty("User");
 
+    if (userprop && req.session.User.hasOwnProperty("id")) {
+
+    var userId = req.session.User.id;
+    User.findOne(userId, function foundUser (err, user){
+
+        // Change online attribute (the user is logging out)
         User.update(userId, {
             online: false
         }, function(err){
             if (err) return next(err);
+
+          // Inform the other sockets
+          User.publishUpdate(userId, {
+              loggedIn: false,
+              id: userId,
+              name: user.name,
+              action: ' har loggat ut.'
+          });
 
           // Wipe out the session (log out)
           req.session.destroy();
@@ -103,6 +126,11 @@ module.exports = {
           res.redirect('/session/new');
         });
     });
+    } else {
+      var noSessionError = [{name: 'noSession', message: 'Du var redan utloggad.'}];
+      req.session.flash = { err: noSessionError };
+      res.redirect('/session/new');
+    }
   },
 
   /**

@@ -53,12 +53,21 @@ module.exports = {
     },
 
     create: function (req, res, next) {
-        User.create(req.params.all(), function userCreated (err, user) {
+
+        var userObj = {
+            name: req.param('name'),
+            title: req.param('title'),
+            email: req.param('email'),
+            password: req.param('password'),
+            confirmation: req.param('confirmation')
+        };
+
+        User.create(userObj, function userCreated (err, user) {
             if (err) {
                 console.log(err);
                 req.session.flash = {
                     err: err
-                }
+                };
                 return res.redirect('user/new');
             }
 
@@ -67,16 +76,34 @@ module.exports = {
             req.session.User = user;
 
             // Change status to online
-            user.online = true
+            user.online = true;
             user.save(function(err, user) {
                 if (err) return next(err);
+                user.action = " signed-up and logged-in."
+                User.publishCreate(user);
                 res.redirect('/user/show/' + user.id)
             });
         })
     },
 
     update: function (req, res, next) {
-        User.update(req.param('id'), req.params.all(), function userUpdated (err) {
+
+        if (req.session.User.admin) {
+            var userObj = {
+                name: req.param('name'),
+                title: req.param('title'),
+                email: req.param('email'),
+                admin: req.param('admin')
+            };
+        } else {
+            var userObj = {
+                name: req.param('name'),
+                title: req.param('title'),
+                email: req.param('email')
+            }
+        }
+
+        User.update(req.param('id'), userObj, function userUpdated (err) {
                if (err) {
                    return res.redirect('/user/edit/' + req.param('id'));
                }
@@ -93,11 +120,26 @@ module.exports = {
 
             User.destroy(req.param('id'), function userDestroyed(err) {
                 if (err) return next(err);
+                User.publishUpdate(user.id, {
+                  name: user.name,
+                  action: ' has been destroyed.'
+                });
+
+                User.publishDestroy(user.id);
             });
 
             res.redirect('/user');
 
         })
     },
+
+    subscribe: function(req, res) {
+        User.find(function foundUsers(err, users) {
+            if (err) return next(err);
+            User.subscribe(req.socket);
+            User.subscribe(req.socket, users);
+            res.send(200);
+        });
+    }
 
 };
