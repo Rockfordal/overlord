@@ -21,7 +21,7 @@ module.exports = {
 
   'new': function(req, res) {
     var oldDateObj = new Date();
-    var ttl = 3600 * 5;
+    var ttl = 3600 * 1000;
     var newDateObj = new Date(oldDateObj.getTime() + ttl);
     req.session.cookie.expires = newDateObj;
     //req.session.authenticated = true;
