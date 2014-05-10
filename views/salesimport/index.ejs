@@ -1,0 +1,53 @@
+<div class="container">
+  <h3>Salesimport</h3>
+
+  <table class="table">
+    <tr>
+      <th>Orgnr</th>
+      <th>Företagsnamn</th>
+      <th>Utdelningsadr</th>
+      <th>Postnr</th>
+      <th>Postort</th>
+      <th>Besöksadress</th>
+      <th>Besök postnr</th>
+      <th>Besök postort</th>
+      <th>Telefon</th>
+      <th>Titel</th>
+      <th>Namn</th>
+      <th>Branschkod</th>
+      <th>Branschtext</th>
+      <th>Anställda</th>
+      <th>Omsättning</th>
+    </tr>
+
+    <% _.each(sales, function(sales) { %>
+    <tr>
+      <td><a href="/salesimport/edit/<%= sales.id %>" </a><%= sales.orgnr %></td>
+      <td><%= sales.orgnamn %></td>
+      <td><%= sales.utdadr %></td>
+      <td><%= sales.postnr %></td>
+      <td><%= sales.postort %></td>
+      <td><%= sales.besadr %></td>
+      <td><%= sales.bespostnr %></td>
+      <td><%= sales.bespostort %></td>
+      <td><a href="tel: <%= sales.telefon %>"><%= sales.telefon %></a></td>
+      <td><%= sales.titel %></td>
+      <td><%= sales.namn %></td>
+      <td><%= sales.branschkod %></td>
+      <td><%= sales.branschtext %></td>
+      <td><%= sales.anstellda %></td>
+      <td><%= sales.omsintervall %></td>
+
+      <td>
+        <form action="/salesimport/destroy/<%= sales.id %>" method="POST">
+          <input type="hidden" name="method" value="delete"/>
+          <input type="submit" class="btn btn-sm btn-danger" value="Radera"/>
+          <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+        </form></td>
+    </tr>
+
+    <% }) %>
+  </table>
+
+  <a class="btn btn-primary" href="/salesimport/new">Skapa</a>
+</div>

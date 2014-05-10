@@ -1,0 +1,114 @@
+<h2>Ändrar <%= sales.orgnamn %></h2><br/>
+
+<form action="/salesimport/update/<%= sales.id %>" method="POST" class="form-horizontal">
+  <div class="form-group">
+    <label for="namn" class="col-sm-2">Namn</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= sales.namn %>" name="namn" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="telefon" class="col-sm-2">Telefon</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= sales.telefon %>" name="telefon" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="orgnr" class="col-sm-2">Orgnr</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= sales.orgnr %>" name="orgnr" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="orgnamn" class="col-sm-2">Orgnamn</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= sales.orgnamn %>" name="orgnamn" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="titel" class="col-sm-2">Titel</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= sales.titel %>" name="titel" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="branschkod" class="col-sm-2">Branschkod</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= sales.branschkod %>" name="branschkod" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="branschtext" class="col-sm-2">Branschtext</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= sales.branschtext %>" name="branschtext" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="anstellda" class="col-sm-2">Anställda</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= sales.anstellda %>" name="anstellda" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="omsintervall" class="col-sm-2">Omsättning Intervall</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= sales.omsintervall %>" name="omsintervall" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="utdadr" class="col-sm-2">Utdelningsadress</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= sales.utdadr %>" name="utdadr" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="besadr" class="col-sm-2">Besöksadress</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= sales.besadr %>" name="besadr" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="postnr" class="col-sm-2">Postnr</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= sales.postnr %>" name="postnr" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="bespostnr" class="col-sm-2">Besökspostnr</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= sales.bespostnr %>" name="bespostnr" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="postort" class="col-sm-2">Postort</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= sales.postort %>" name="postort" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="bespostort" class="col-sm-2">Besökspostort</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= sales.bespostort %>" name="bespostort" class="form-control"/>
+    </div>
+  </div>
+
+  <br/>
+  <div class="well">
+    <input type="submit" value="Ändra" class="btn btn-lg btn-primary"/>
+    <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+  </div>
+</form>
