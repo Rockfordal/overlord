@@ -26,7 +26,10 @@ module.exports.policies = {
       edit: 'userCanSeeProfile',
       update: 'userCanSeeProfile',
       '*': "admin"
-  }
+    },
+  salesimport: {
+      '*': "admin",
+    }
 
   /*
 	// Here's an example of adding some policies to a controller
