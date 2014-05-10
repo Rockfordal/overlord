@@ -15,7 +15,7 @@ module.exports.session = {
   // Session secret is automatically generated when your new app is created
   // Replace at your own risk in production-- you will invalidate the cookies of your users,
   // forcing them to log in again. 
-  secret: '53f373059e4015ea9b882cb71d7026b1'
+  secret: '53f373059e4015ea9b882cb71d7026b1',
 
   //cookie: {
   //  maxAge: 60 * 60 * 1000
@@ -38,13 +38,12 @@ module.exports.session = {
 
 
   // Uncomment the following lines to use your Mongo adapter as a session store
-  // adapter: 'mongo',
-  //
-  // host: 'localhost',
-  // port: 27017,
-  // db: 'sails',
-  // collection: 'sessions',
-  //
+   adapter: 'mongo',
+   host: 'localhost',
+   port: 27017,
+   db: 'overlord',
+   collection: 'sessions'
+
   // Optional Values:
   //
   // # Note: url will override other connection settings
