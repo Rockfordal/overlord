@@ -103,7 +103,7 @@ module.exports = {
             }
         }
 
-        User.update(req.param('id'), userObj, function userUpdated (err) {
+        User.update(req.param('id'), userObj, function userUpdated(err) {
                if (err) {
                    return res.redirect('/user/edit/' + req.param('id'));
                }
@@ -114,7 +114,7 @@ module.exports = {
     },
 
     destroy: function(req, res, next) {
-        User.findOne(req.param('id'), function foundUser (err, user) {
+        User.findOne(req.param('id'), function foundUser(err, user) {
             if (err) return next(err);
             if (!user) return next("User doesn't exist.");
 

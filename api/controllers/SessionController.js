@@ -103,7 +103,7 @@ module.exports = {
     if (userprop && req.session.User.hasOwnProperty("id")) {
 
     var userId = req.session.User.id;
-    User.findOne(userId, function foundUser (err, user){
+    User.findOne(userId, function foundUser(err, user){
 
         // Change online attribute (the user is logging out)
         User.update(userId, {

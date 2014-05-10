@@ -19,7 +19,8 @@ module.exports.bootstrap = function (cb) {
     function userUpdated(err, users) {
       if (err) {
         console.log(err);
-      } else { // console.log(users);
+      } else {
+       // console.log(users);
       }
       cb();
     }
