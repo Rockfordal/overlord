@@ -1,6 +1,5 @@
-
 /**
- * UserController
+ * SalesimportController
  *
  * @module      :: Controller
  * @description    :: A set of functions called `actions`.
@@ -68,7 +67,7 @@ module.exports = {
         req.session.flash = {
           err: err
         };
-        return res.redirect('sales/new');
+        return res.redirect('salesimport/new');
       }
 
       salesimport.save(function(err, salesimport) {
@@ -103,10 +102,10 @@ module.exports = {
     Salesimport.update(req.param('id'), salesObj, function salesUpdated(err) {
         if (err) {
           return res.redirect('/salesimport/edit/' + req.param('id'));
-          //return res.redirect('/salesimport');
+          // return res.redirect('/salesimport');
         }
 
-        res.redirect('/salesimport/edit/' + req.param('id'));
+        res.redirect('/salesimport');
       }
     )
   },
