@@ -1,0 +1,28 @@
+<div class="container">
+  <h3>Kontakt</h3>
+
+  <table class="table">
+    <tr>
+      <th>Namn</th>
+      <th>Titel</th>
+    </tr>
+
+    <% _.each(contacts, function(contact) { %>
+    <tr>
+      <td><a href="/contact/edit/<%= contact.id %>" </a><%= contact.namn %></td>
+      <td><%= contact.titel %></td>
+      <td>
+        <form action="/contact/destroy/<%= contact.id %>" method="POST">
+          <input type="hidden" name="method" value="delete"/>
+          <input type="submit" class="btn btn-sm btn-danger" value="Radera"/>
+          <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+        </form>
+      </td>
+    </tr>
+    <% }) %>
+  </table>
+
+  <div class="well">
+    <a class="btn btn-primary" href="/contact/new">Skapa</a>
+  </div>
+</div>
