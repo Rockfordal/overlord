@@ -1,0 +1,48 @@
+<form action="/campain/create" method="POST" id="sign-up-form" class="form-signin">
+
+  <h2 class="form-signin-heading">Skapa kampanj </h2><br/>
+
+  <fieldset>
+    <div class="col-sm-4">
+      <div class="box">
+        <div class="lead">Namn</div>
+        <small class="text-muted">Kampanjens namn</small>
+      </div>
+    </div>
+    <div class="col-sm-7 col-sm-offset-1">
+      <div class="form-group">
+        <input type="text" class="form-control" name="namn">
+      </div>
+    </div>
+  </fieldset>
+
+  <hr class="hr-normal">
+
+  <fieldset>
+    <div class="col-sm-4">
+      <div class="box">
+        <div class="lead">Info</div>
+        <small class="text-muted">Lite information om kampanjen</small>
+      </div>
+    </div>
+    <div class="col-sm-7 col-sm-offset-1">
+      <div class="form-group">
+        <input type="text" class="form-control" name="info">
+      </div>
+    </div>
+  </fieldset>
+
+
+  <br/>
+  <div class="well">
+    <div class="form-actions">
+      <div class="row">
+        <div class="col-sm-7 col-sm-offset-5">
+          <input type="submit" class="btn btn-lg btn-success" value="Skapa">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+</form>
