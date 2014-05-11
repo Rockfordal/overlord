@@ -1,0 +1,26 @@
+<div class="container">
+  <h3>Företag</h3>
+
+  <table class="table">
+    <tr>
+      <th>Namn</th>
+    </tr>
+
+    <% _.each(orgunits, function(orgunit) { %>
+    <tr>
+      <td><a href="/orgunit/edit/<%= orgunit.id %>" </a><%= orgunit.namn %></td>
+      <td>
+        <form action="/orgunit/destroy/<%= orgunit.id %>" method="POST">
+          <input type="hidden" name="method" value="delete"/>
+          <input type="submit" class="btn btn-sm btn-danger" value="Radera"/>
+          <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+        </form>
+      </td>
+    </tr>
+    <% }) %>
+  </table>
+
+  <div class="well">
+    <a class="btn btn-primary" href="/orgunit/new">Skapa</a>
+  </div>
+</div>
