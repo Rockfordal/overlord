@@ -9,6 +9,8 @@
     <!--STYLES-->
     <link rel="stylesheet" href="/linker/styles/custom.css">
     <link rel="stylesheet" href="/linker/styles/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="/linker/styles/vendor/datepicker.css">
+    <link rel="stylesheet" href="/linker/styles/vendor/datepicker3.css">
     <link rel="stylesheet" href="/linker/styles/vendor/toastr.min.css">
     <!--STYLES END-->
 
@@ -41,9 +43,8 @@
             <div class="collapse navbar-collapse">
               <ul class="nav navbar-nav">
                 <% if (session.authenticated) { %>
-                  <li class="active"><a href="/user/show/<%= session.User.id %>"><%= session.User.name %></a></li>
+                  <li id="user" class="active"><a href="/user/show/<%= session.User.id %>"><%= session.User.name %></a></li>
                   <li><a href="/orgunit">Företag</a></li>
-                  <li><a href="/activity">Aktiviteter</a></li>
                   <li>
                     <select name="campain" id="campain">
                       <option value="">Välj kampanj:</option>
@@ -70,8 +71,9 @@
                   <ul class="dropdown-menu">
                     <% if (session.authenticated) { %>
                       <li><a href="/user">Användare</a></li>
-                      <li><a href="/salesimport">Import</a></li>
+                      <li><a href="/salesimport">Importera</a></li>
                       <li><a href="/contact">Kontakter</a></li>
+                      <li><a href="/activity">Aktiviteter</a></li>
                       <li><a href="/campain">Kampanjer</a></li>
                       <li><a href="/session/destroy">Logga ut</a></li>
                     <% } %>
@@ -98,8 +100,11 @@
     <script src="/linker/js/app.js"></script>
     <script src="/linker/js/vendor/jquery.min.js"></script>
     <script src="/linker/js/vendor/bootstrap.min.js"></script>
-    <script src="/linker/js/vendor/toastr.min.js"></script>
+    <script src="/linker/js/vendor/bootstrap-datepicker.js"></script>
     <script src="/linker/js/vendor/underscore.js"></script>
+    <script src="/linker/js/vendor/toastr.min.js"></script>
+    <script src="/linker/js/vendor/moment.min.js"></script>
+    <script src="/linker/js/sales.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>
