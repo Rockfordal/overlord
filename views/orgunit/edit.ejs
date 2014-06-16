@@ -1,4 +1,4 @@
-<h2>Ändrar <%= orgunit.namn %></h2><br/>
+<h2><%= orgunit.namn %></h2><br/>
 
 <form action="/orgunit/update/<%= orgunit.id %>" method="POST" class="form-horizontal">
   <div class="form-group">
@@ -15,9 +15,100 @@
     </div>
   </div>
 
+  <div class="form-group">
+    <label for="telefon" class="col-sm-2">Telefon</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= orgunit.telefon %>" name="telefon" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="branschkod" class="col-sm-2">Branschkod</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= orgunit.branschkod %>" name="branschkod" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="branschtext" class="col-sm-2">Branschtext</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= orgunit.branschtext %>" name="branschtext" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="anstellda" class="col-sm-2">Anställda</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= orgunit.anstellda %>" name="anstellda" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="omsintervall" class="col-sm-2">Omsättning Intervall</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= orgunit.omsintervall %>" name="omsintervall" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="utdadr" class="col-sm-2">Utdelningsadress</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= orgunit.utdadr %>" name="utdadr" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="besadr" class="col-sm-2">Besöksadress</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= orgunit.besadr %>" name="besadr" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="postnr" class="col-sm-2">Postnr</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= orgunit.postnr %>" name="postnr" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="bespostnr" class="col-sm-2">Besökspostnr</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= orgunit.bespostnr %>" name="bespostnr" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="postort" class="col-sm-2">Postort</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= orgunit.postort %>" name="postort" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="bespostort" class="col-sm-2">Besökspostort</label>
+    <div class="col-sm-10">
+      <input type="text" value="<%= orgunit.bespostort %>" name="bespostort" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="bespostort" class="col-sm-2">Övrigt</label>
+    <div class="col-sm-10">
+      <textarea type="text" rows="7" id="info" value="<%= orgunit.info %>" name="info" class="form-control"><%= orgunit.info %></textarea>
+    </div>
+  </div>
+
   <br/>
   <div class="well">
     <input type="submit" value="Ändra" class="btn btn-lg btn-primary"/>
     <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
   </div>
 </form>
+
+<form action="/orgunit/destroy/<%= orgunit.id %>" method="POST">
+  <input type="hidden" name="method" value="delete"/>
+  <input type="submit" class="btn btn-lg btn-danger" value="Radera"/>
+  <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+</form>
+

@@ -8,19 +8,23 @@
 
     <% _.each(orgunits, function(orgunit) { %>
     <tr>
-      <td><a href="/orgunit/edit/<%= orgunit.id %>" </a><%= orgunit.namn %></td>
       <td>
-        <form action="/orgunit/destroy/<%= orgunit.id %>" method="POST">
-          <input type="hidden" name="method" value="delete"/>
-          <input type="submit" class="btn btn-sm btn-danger" value="Radera"/>
-          <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
-        </form>
+        <a href="/orgunit/edit/<%= orgunit.id %>" </a><%= orgunit.namn %></td>
+      <td>
+        <!--<a href="/activity/edit/536fa2771a8530511dcc5db0">-->
+          <!--<span class="glyphicon glyphicon-star"></span>-->
+        <!--</a>-->
+        <a href="/activity/findbyorgunitid?id=<%= orgunit.id %>">
+          <span class="glyphicon glyphicon-star"></span>
+        </a>
+      </td>
+      <td>
       </td>
     </tr>
     <% }) %>
   </table>
 
   <div class="well">
-    <a class="btn btn-primary" href="/orgunit/new">Skapa</a>
+    <a class="btn btn-primary" href="/orgunit/new">Nytt</a>
   </div>
 </div>

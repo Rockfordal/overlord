@@ -6,9 +6,20 @@ module.exports = {
   attributes: {
     namn: 'STRING',
     orgnr: 'STRING',
+    branschkod: 'INTEGER',
+    branschtext: 'STRING',
+    anstellda: 'STRING',
+    omsintervall: 'STRING',
+    utdadr: 'STRING',
+    postnr: 'STRING',
+    postort: 'STRING',
+    besadr: 'STRING',
+    bespostnr: 'STRING',
+    bespostort: 'STRING',
+    telefon: 'STRING',
+    info: 'STRING',
     contacts: {
-      collection: "contact",
-      via: "contact"
+      collection: "Contact", via: "contacts"
     }
 
   },

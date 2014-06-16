@@ -18,12 +18,12 @@
 module.exports = {
 
   index: function (req, res, next) {
-    Orgunit.find(function foundOrgunit(err, orgunits) {
+    Orgunit.find().sort('namn').exec(function foundOrgunit(err, orgunits) {
       if (err) return next(err);
       res.view({
         orgunits: orgunits
       });
-    });
+    })
   },
 
   'new': function (req, res) {
@@ -46,6 +46,19 @@ module.exports = {
     var orgunitObj = {
       namn: req.param('namn'),
       orgnr: req.param('orgnr'),
+      orgnamn: req.param('orgnamn'),
+      telefon:   req.param('telefon'),
+      branschkod: req.param('branschkod'),
+      branschtext: req.param('branschtext'),
+      anstellda: req.param('anstellda'),
+      omsintervall: req.param('omsintervall'),
+      utdadr: req.param('utdadr'),
+      besadr: req.param('besadr'),
+      postnr: req.param('postnr'),
+      bespostnr: req.param('bespostnr'),
+      postort: req.param('postort'),
+      bespostort: req.param('bespostort'),
+      info: req.param('info')
     };
 
     Orgunit.create(orgunitObj, function orgunitCreated(err, orgunit) {
@@ -71,6 +84,19 @@ module.exports = {
     var orgunitObj = {
       namn: req.param('namn'),
       orgnr: req.param('orgnr'),
+      orgnamn: req.param('orgnamn'),
+      telefon:   req.param('telefon'),
+      branschkod: req.param('branschkod'),
+      branschtext: req.param('branschtext'),
+      anstellda: req.param('anstellda'),
+      omsintervall: req.param('omsintervall'),
+      utdadr: req.param('utdadr'),
+      besadr: req.param('besadr'),
+      postnr: req.param('postnr'),
+      bespostnr: req.param('bespostnr'),
+      postort: req.param('postort'),
+      bespostort: req.param('bespostort'),
+      info: req.param('info')
     };
 
     Orgunit.update(req.param('id'), orgunitObj, function orgunitUpdated(err) {
@@ -86,7 +112,7 @@ module.exports = {
   destroy: function(req, res, next) {
     Orgunit.findOne(req.param('id'), function foundOrgunit(err, orgunit) {
       if (err) return next(err);
-      if (!orgunit) return next("Kampanjen finns inte");
+      if (!orgunit) return next("Företaget finns inte");
 
       Orgunit.destroy(req.param('id'), function orgunitDestroyed(err) {
         if (err) return next(err);
