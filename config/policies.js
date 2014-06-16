@@ -36,6 +36,9 @@ module.exports.policies = {
   },
   contact: {
     '*': "admin"
+  },
+  activity: {
+    '*': "admin"
   }
 
 };
