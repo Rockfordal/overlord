@@ -1,0 +1,150 @@
+<div id="edit_activity" class="row">
+  <div class="col-md-6">
+
+    <h2>Hantera aktivitet</h2><br/>
+
+  <form action="/activity/update/<%= activity.id %>" method="POST" class="form-horizontal">
+    <div class="form-group">
+      <label for="datum" class="col-sm-3">Datum</label>
+      <div class="col-sm-7">
+        <input type="text" value="<%= activity.datum %>" name="datum" class="form-control datepicker"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="tid" class="col-sm-3">Tid</label>
+      <div class="col-sm-7">
+        <input type="text" value="<%= activity.tid %>" name="tid" class="form-control"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="info" class="col-sm-3">Anteckning</label>
+      <div class="col-sm-7">
+        <textarea type="text" rows="7" id="info" value="<%= activity.info %>" name="info" class="form-control"><%= activity.info %></textarea>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3"></label>
+      <div class="col-sm-7">
+        <a id="infogasignatur" href="" class="btn btn-default">Infoga signatur</a><br/>
+      </div>
+    </div>
+
+    <br/>
+    <div class="well">
+      <a href="/activity" class="btn btn-default btn-lg">Tillbaka</a>
+      &nbsp; &nbsp; &nbsp;
+      <input type="submit" value="Spara" class="btn btn-lg btn-primary"/>
+      <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+    </div>
+  </form>
+  </div>
+
+  <div class="col-md-6">
+    <% if (typeof orgunit != "undefined") { %>
+
+    <h2><%= orgunit.namn %></h2>
+    <a href="/orgunit/edit/<%= orgunit.id %>"><span class="inline glyphicon glyphicon-edit"></span></a>
+    <br/>
+
+    <br/>
+    <div class="form-group">
+      <label class="col-sm-3">Telefon</label>
+      <div class="col-sm-7">
+        <div id="telefon" name="telefon">
+          <a href="callto://<%= orgunit.telefon %>"><b><%= orgunit.telefon %></b></a>
+        </div>
+      </div>
+    </div>
+
+    <br/>
+    <div class="form-group">
+      <label class="col-sm-3">Besöksadr</label>
+      <div class="col-sm-7">
+        <div name="besadr"><%= orgunit.besadr %></div>
+
+        <%= orgunit.bespostnr %>
+        <%= orgunit.bespostort %>
+      </div>
+    </div>
+    <br/>
+
+    <br/>
+    <div class="form-group">
+      <label class="col-sm-3">Anställda</label>
+      <div class="col-sm-7">
+        <div name="anstellda"><%= orgunit.anstellda %></div>
+      </div>
+    </div>
+
+    <br/>
+    <div class="form-group">
+      <label class="col-sm-3">Omsättning</label>
+      <div class="col-sm-7">
+        <div name="omsintervall"><%= orgunit.omsintervall %></div>
+      </div>
+    </div>
+
+    <!--<br/>-->
+    <!--<div class="form-group">-->
+      <!--<label class="col-sm-3">Branschkod</label>-->
+      <!--<div class="col-sm-7">-->
+        <!--<div name="branschkod"><%= orgunit.branschkod %></div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <br/>
+    <div class="form-group">
+      <label class="col-sm-3">Branschtext</label>
+      <div class="col-sm-7">
+        <div name="branshtext"><%= orgunit.branschtext %></div>
+      </div>
+    </div>
+
+    <!--<br/>-->
+    <!--<div class="form-group">-->
+      <!--<label class="col-sm-3">Org.nr</label>-->
+      <!--<div class="col-sm-7">-->
+        <!--<div name="orgnr"><%= orgunit.orgnr %></div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <br/>
+    <div class="form-group">
+      <label class="col-sm-3">Övrigt</label>
+      <div class="col-sm-7">
+        <div name="info"><%= orgunit.info %></div>
+      </div>
+    </div>
+
+    <br/>
+    <br/>
+    <div class="form-group">
+      <label class="col-sm-3">Skapad</label>
+      <div class="col-sm-7">
+        <div name="createdAt"><%= orgunit.createdAt %></div>
+      </div>
+    </div>
+
+    <br/>
+    <div class="form-group">
+      <label class="col-sm-3">Uppdaterad</label>
+      <div class="col-sm-7">
+        <div name="updatedAt"><%= orgunit.updatedAt %></div>
+      </div>
+    </div>
+
+    <% } %>
+
+    <br/>
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Föregående</button>
+      <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-star"></span> Boka möte</button>
+      <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-right"></span>
+        Nästa</button>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="container">
+  <h3>Aktiviteter</h3>
+
+  <table class="table">
+    <tr>
+      <th>Datum</th>
+      <th>Tid</th>
+      <th>Företag</th>
+    </tr>
+
+    <% _.each(activitys, function(activity) { %>
+    <tr>
+      <td><a href="/activity/edit/<%= activity.id %>" </a><%= activity.datum %></td>
+      <td><%= activity.tid %></td>
+      <td><%= activity.org_id || '' %></td>
+      <td>
+        <form action="/activity/destroy/<%= activity.id %>" method="POST">
+          <input type="hidden" name="method" value="delete"/>
+          <input type="submit" class="btn btn-sm btn-danger" value="Radera"/>
+          <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+        </form>
+      </td>
+    </tr>
+    <% }) %>
+  </table>
+
+  <div class="well">
+    <a class="btn btn-primary" href="/activity/new">Skapa</a>
+  </div>
+</div>
